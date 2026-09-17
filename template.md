@@ -31,20 +31,6 @@ I’m an R Markdown document!
 
 ``` r
 library(tidyverse)
-```
-
-    ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-    ## ✔ dplyr     1.2.1     ✔ readr     2.2.0
-    ## ✔ forcats   1.0.1     ✔ stringr   1.6.0
-    ## ✔ ggplot2   4.0.3     ✔ tibble    3.3.1
-    ## ✔ lubridate 1.9.5     ✔ tidyr     1.3.2
-    ## ✔ purrr     1.2.2     
-    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-    ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-
-``` r
 library(ggplot2)
 ```
 
@@ -61,7 +47,7 @@ length(samp)
 
 # Section 2
 
-I can take the mean of the sample, too! The mean is 0.1072721.
+I can take the mean of the sample, too! The mean is -0.0296889.
 
 # Section 3: a tibble
 
@@ -76,12 +62,12 @@ head(plot_df)
     ## # A tibble: 6 × 2
     ##         x      y
     ##     <dbl>  <dbl>
-    ## 1  0.730   2.20 
-    ## 2 -0.124   0.134
-    ## 3 -0.184  -1.00 
-    ## 4 -0.247   1.26 
-    ## 5 -0.0699  3.74 
-    ## 6 -0.720   0.557
+    ## 1  0.348   1.55 
+    ## 2 -0.267   2.06 
+    ## 3  0.240   2.77 
+    ## 4  0.797   1.20 
+    ## 5 -0.0746  0.616
+    ## 6 -1.09   -0.945
 
 # Section 4: Plot
 

@@ -16,7 +16,7 @@ I'm an R Markdown document!
 ##### 'message=F' in the R chunk intro means that all of the messy info will be hidden.  
 
 ##### 'eval=F' prevents the code inside a specific chunk from being executed when you knit the document.
-```{r load_libraries,messgae =F, eval=T}
+```{r load_libraries,message =F, eval=T}
 library(tidyverse)
 library(ggplot2)
 ```
