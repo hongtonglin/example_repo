@@ -1,0 +1,133 @@
+---
+title: "Simple document"
+author: "Hongtong Lin"
+date: "2026-09-15"
+output: 
+  html_document:
+          toc: true
+          toc_float: true
+---
+
+I'm an R Markdown document! 
+
+# Section 0: libraries 
+##### 'load libraries' is the name of this r chunk. naming each code chunks will help you check where the bugs are.  
+
+##### 'message=F' in the R chunk intro means that all of the messy info will be hidden.  
+
+##### 'eval=F' prevents the code inside a specific chunk from being executed when you knit the document.
+```{r load_libraries,messgae =F, eval=T}
+library(tidyverse)
+library(ggplot2)
+```
+
+# Section 1
+
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r}
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too!
+The mean is `r mean(samp)`.
+
+# Section 3: a tibble 
+
+```{r}
+plot_df = tibble(
+  x = rnorm(1000, sd = .5),
+  y = 1 + 2 * x + rnorm(1000)
+)
+head(plot_df)
+```
+
+# Section 4: Plot 
+##### 'echo=F' in the r chunk intro means the results will show up in the kinnted document
+```{r, echo =F} 
+ggplot(plot_df, aes(x = x)) + geom_histogram() #histogram
+
+ggplot(plot_df, aes(x = x, y = y)) + geom_point() #scatterplot of x and y
+```
+
+# Section 5: learning assignment 2  
+
+Write a named code chunk that creates a dataframe comprised of: a numeric variable containing a random sample of size 500 from a normal variable with mean 1; a logical vector indicating whether each sampled value is greater than zero; and a numeric vector containing the absolute value of each element. Then, produce a histogram of the absolute value variable just created. Add an inline summary giving the median value rounded to two decimal places. What happens if you set eval = FALSE to the code chunk? What about echo = FALSE?  
+
+This plot shows the distribution of the absolute value of $X \sim N(1,1)$. **(this is the latex language)**
+
+```{r learning assignment 2}
+set.seed(1)
+# Fixes the random number generator's starting point. Without it, rnorm() draws
+# a different 500 numbers every time you knit, so your histogram and any numbers
+
+la_df <- tibble(
+  x = rnorm(500, mean = 1), # rnorm() = draw from a normal distribution. Smaple size of 500, mean =1, sd=1 by defult
+  pos = x>0,
+  abs_x = abs(x)
+)
+
+ggplot(
+  la_df,
+  aes(x = abs_x)
+) + geom_histogram()
+
+```
+
+The median is `r round(median(la_df$x),2)`. The code is `round(median(la_df$x),2) or round(median(pull((la_df, x)),2)`
+
+# Section 6: Text formatting
+Text formatting 
+------------------------------------------------------------
+
+*italic*  or  _italic_
+**bold**  or  __bold__
+`code`
+superscript^2^ and subscript~2~
+
+
+Headings
+------------------------------------------------------------
+
+# 1st Level Header
+
+## 2nd Level Header
+
+### 3rd Level Header
+
+
+Lists
+------------------------------------------------------------
+
+*   Bulleted list item 1
+
+*   Item 2
+
+    * Item 2a
+
+    * Item 2b
+
+1.  Numbered list item 1
+
+1.  Item 2. The numbers are incremented automatically in the output.
+
+
+Tables 
+------------------------------------------------------------
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+# Section 7: Learning assignment 3  
+
+After the previous code chunk, write a bullet list given the mean, median, and standard deviation of the original random sample.  
+
+* the medain is `r round(median(la_df$x),2)`.  
+* the mean is `r round(mean(la_df$x),2)`.  
+* the standard deviation is `r round(sd(la_df$x),2)`.
